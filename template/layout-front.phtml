@@ -1,0 +1,511 @@
+<?php
+// Set doctype explicitly if it is not `HTML4_LOOSE`, i.e. 'HTML 4.01 Transitional'
+$this->doctype('HTML5');
+
+// Load translation data
+$this->i18nTheme();
+
+//HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+$this->js(array(
+    pi::url('static/js/html5shiv.js') => array(
+        'conditional' => 'lt IE 9'
+    ),
+    pi::url('static/js/respond.min.js') => array(
+        'conditional' => 'lt IE 9'
+    ),
+));
+
+// Load jQuery
+$this->jquery();
+
+// Load Bootstrap css/js and font-awesome
+$this->bootstrap(array(
+    'js/bootstrap.min.js',
+    'font-awesome/css/font-awesome.min.css'
+));
+
+// Load front.css
+$this->css($this->assetTheme('css/front.css'));
+
+// Load localization css
+$this->css($this->assetLocale('locale.css'));
+
+// Load front.js on footer
+$this->footScript()->appendFile($this->assetTheme('js/front.js'));
+
+// Apple icons
+// Apple icon for iphone
+$this->headLink(array(
+    'rel'   => 'apple-touch-icon',
+    'href'  => $this->assetTheme('image/touch-icon-iphone.png')
+));
+// Apple icon for ipad
+$this->headLink(array(
+    'rel'   => 'apple-touch-icon',
+    'sizes' => '72x72',
+    'href'  => $this->assetTheme('image/touch-icon-ipad.png')
+));
+// Apple icon for iphone retina
+$this->headLink(array(
+    'rel'   => 'apple-touch-icon',
+    'sizes' => '114x114',
+    'href'  => $this->assetTheme('image/touch-icon-iphone-retina.png')
+));
+// Apple icon for ipad retina
+$this->headLink(array(
+    'rel'   => 'apple-touch-icon',
+    'sizes' => '114x114',
+    'href'  => $this->assetTheme('image/touch-icon-ipad-retina.png')
+));
+
+// Meta Viewport Tag
+$this->headMeta('width=device-width, initial-scale=1.0', 'viewport');
+
+// Explicitly load favicon
+$this->headLink(array(
+    'rel'   => 'shortcut icon',
+    'type'  => 'image/x-icon',
+    'href'  => $this->favicon(),
+));
+$this->headLink(array(
+    'rel'   => 'shortcut icon',
+    'type'  => 'image/png',
+    'href'  => $this->favicon('favicon.png'),
+));
+
+// Load google analytics code
+$this->ga();
+
+// Get module name
+$module = Pi::service('module')->current();
+
+// Get navigation
+$navigation = $this->nav('front');
+
+// Get block
+$blocks = $this->blocks();
+$blockTemplate = $this->template('block');
+
+// Get breadcrumbs
+$breadcrumbs = $this->breadcrumb(
+    array('prefix' => array(
+        array(
+            'label' => __('Home'),
+            'href' => Pi::url($this->url('home'))
+        )
+    ))
+);
+
+// Get user bar block
+$userBar = $this->widget('system-user-bar', array(
+    'type'            => 'flat',
+    'float'           => 'left',
+    'show_title'      => 1,
+    'show_message'    => 'merge',
+    'show_support'    => 0,
+    'show_order'      => 1,
+    'show_credit'     => 1,
+    'show_favourite'  => 0,
+));
+?>
+<!DOCTYPE HTML>
+<html lang="<?php echo $locale; ?>">
+<head>
+    <meta charset="<?php echo $charset; ?>">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+</head>
+<body id="pi-<?php echo $module; ?>" class="pi-locale-<?php echo $locale; ?> pi-front">
+<!-- Header: brand, slogan, user bar -->
+<header class="pi-header">
+    <div class="pi-header-top clearfix hidden-xs">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                    <div class="row clearfix">
+                        <div class="col-md-12 col-xs-12">
+                            <?php echo $userBar; ?>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a title="تماس با ما" href="#">۰۲۱-۸۸۵۱۱۹۲۱</a></li>
+                                <li><a title="تماس با ما" href="#">تماس با ما</a></li>
+                                <li><a title="درباره ما" href="#">درباره ما</a></li>
+                                <li><?php echo $this->widget('shop-basket'); ?></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pi-header-body clearfix">
+        <div class="pi-header-nav navbar navbar-default clearfix">
+            <div class="container-fluid">
+                <div class="row" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                    <nav class="col-md-8 col-md-offset-2 col-xs-12 clearfix">
+                        <div class="navbar-header pi-header-left">
+                            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <?php if ($module == 'system') { ?>
+                                <h1>
+                                    <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
+                                        <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
+                                    </a>
+                                </h1>
+                            <?php } else { ?>
+                                <h2>
+                                    <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
+                                        <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
+                                    </a>
+                                </h2>
+                            <?php } ?>
+                        </div>
+                        <div class="navbar-collapse collapse pi-header-right">
+                            <ul class="nav navbar-nav navbar-right pi-navbar-nav animated fadeInUp clearfix">
+                                <li<?php if ($module == 'system') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir" title="خانه">
+                                        <span itemprop="name">خانه</span>
+                                    </a>
+                                </li>
+                                <li<?php if ($module == 'shop') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir/shop" title="فروشگاه">
+                                        <span itemprop="name">فروشگاه</span>
+                                    </a>
+                                </li>
+                                <li<?php if ($module == 'video') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir/video" title="ویدیو ها">
+                                        <span itemprop="name">ویدیو ها</span>
+                                    </a>
+                                </li>
+                                <li<?php if ($module == 'news') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir/news" title="علم ورزش">
+                                        <span itemprop="name">علم ورزش</span>
+                                    </a>
+                                </li>
+                                <li<?php if ($module == 'guide') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir/guide" title="مربیان و باشگاه ها">
+                                        <span itemprop="name">مربیان و باشگاه ها</span>
+                                    </a>
+                                </li>
+                                <li<?php if ($module == 'talent') { ?> class="active"<?php } ?>>
+                                    <a itemprop="url" href="http://www.osport.ir/talent" title="استعداد یابی">
+                                        <span itemprop="name">استعداد یابی</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php echo $userBar; ?>
+                            <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
+                                <li><a title="تماس با ما" href="#">۰۲۱-۸۸۵۱۱۹۲۱</a></li>
+                                <li><a title="تماس با ما" href="#">تماس با ما</a></li>
+                                <li><a title="درباره ما" href="#">درباره ما</a></li>
+                                <li><?php echo $this->widget('shop-basket'); ?></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-search">
+        <div class="header-search-bg">
+            <!-- Top head zone -->
+            <?php if ($module == 'system') { ?>
+                <?php echo $this->widget('widget-highlights'); ?>
+            <?php } else { ?>
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <picture>
+                                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-mobi.jpg'); ?>" media="(max-width: 320px)" srcset="<?php echo $this->assetTheme('image/header/header-mobi.jpg'); ?>">
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-smart.jpg'); ?>" media="(max-width: 480px)" srcset="<?php echo $this->assetTheme('image/header/header-smart.jpg'); ?>">
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-tab.jpg'); ?>" media="(max-width: 768px)" srcset="<?php echo $this->assetTheme('image/header/header-tab.jpg'); ?>">
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-lap.jpg'); ?>" media="(max-width: 1366px)" srcset="<?php echo $this->assetTheme('image/header/header-lap.jpg'); ?>">
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-xlap.jpg'); ?>" media="(max-width: 1920px)" srcset="<?php echo $this->assetTheme('image/header/header-xlap.jpg'); ?>">
+                                <source data-srcset="<?php echo $this->assetTheme('image/header/header-desk.jpg'); ?>" media="(max-width: 2880px)" srcset="<?php echo $this->assetTheme('image/header/header-desk.jpg'); ?>">
+                                <!--[if IE 9]></video><![endif]-->
+                                <img class="img-responsive lazyloaded" data-src="<?php echo $this->assetTheme('image/header/header-xlap.jpg'); ?>" alt="<?php echo _escape($sitename); ?>" src="<?php echo $this->assetTheme('image/header/header-xlap.jpg'); ?>">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="header-search-box">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-xs-12">
+                        <?php echo $this->widget('search-search'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Page main content: breadcrumb, flash-messenger, blocks and module content -->
+<section class="pi-section">
+    <?php if ($module == 'system') { ?>
+        <div class="pi-section-search">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="pi-section-search-box clearfix">
+                            d
+
+                        </div>
+                        <div class="pi-section-search-box clearfix">
+                            d
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 hidden-xs ">
+                        <div class="pi-section-search-image clearfix">
+                            <a title="" href="#">
+                                <img class="img-responsive" src="<?php echo $this->assetTheme('image/tabligh1.jpg'); ?>" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-brand">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <?php echo $this->widget('widget-brand'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-box">
+
+        </div>
+    <?php } ?>
+    <div class="container-fluid">
+        <div class="pi-main-container">
+            <?php if ($breadcrumbs) { echo $breadcrumbs; } ?>
+            <!-- Flash messenger -->
+            <?php include $this->template('flash-messenger'); ?>
+            <!-- Top head zone -->
+            <?php if (!empty($blocks['0'])) { ?>
+                <div class="pi-zone-0">
+                    <?php foreach ($blocks['0'] as $block) {
+                        include $blockTemplate;
+                    } ?>
+                </div>
+            <?php } ?>
+            <div class="row">
+                <!-- Left zone -->
+                <?php if (!empty($blocks['1'])) { ?>
+                    <div class="pi-zone-1 col-md-4">
+                        <?php foreach ($blocks['1'] as $block) {
+                            include $blockTemplate;
+                        } ?>
+                    </div>
+                <?php } ?>
+                <div class="<?php
+                if (isset($blocks['1']) && isset($blocks['8'])) {
+                    echo 'col-md-4';
+                } elseif (isset($blocks['1']) || isset($blocks['8'])) {
+                    echo 'col-md-8';
+                } else {
+                    echo 'col-md-12';
+                }
+                ?>">
+                    <!-- Center top zone -->
+                    <?php if (isset($blocks['2'])) { ?>
+                        <div class="pi-zone-2">
+                            <?php foreach ($blocks['2'] as $block) {
+                                include $blockTemplate;
+                            } ?>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($blocks['3']) || isset($blocks['4'])) { ?>
+                        <div class="row">
+                            <div class="col-md-6 pi-zone-3">
+                                <?php
+                                if (isset($blocks['3'])) {
+                                    foreach ($blocks['3'] as $block) {
+                                        include $blockTemplate;
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="col-md-6 pi-zone-4">
+                                <?php
+                                if (isset($blocks['4'])) {
+                                    foreach ($blocks['4'] as $block) {
+                                        include $blockTemplate;
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <!-- Module content starts -->
+                    <?php if (!empty($content)) { ?>
+                        <div class="<?php echo $module; ?>">
+                            <div class="pi-module-content" data-ng-app="<?php echo $module; ?>">
+                                <?php echo $content; ?>
+                            </div>
+                            <?php echo Pi::service('comment')->load(array('options' => array('type' => 'js'))); ?>
+                        </div>
+                    <?php } ?>
+                    <!-- Module content ends -->
+                    <?php if (isset($blocks['5']) || isset($blocks['6'])) { ?>
+                        <div class="row">
+                            <div class="col-md-6 pi-zone-5">
+                                <?php
+                                if (isset($blocks['5'])) {
+                                    foreach ($blocks['5'] as $block) {
+                                        include $blockTemplate;
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="col-md-6 pi-zone-6">
+                                <?php
+                                if (isset($blocks['6'])) {
+                                    foreach ($blocks['6'] as $block) {
+                                        include $blockTemplate;
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <!-- Center bottom zone -->
+                    <?php if (isset($blocks['7'])) { ?>
+                        <div class="pi-zone-7">
+                            <?php foreach ($blocks['7'] as $block) {
+                                include $blockTemplate;
+                            } ?>
+                        </div>
+                    <?php } ?>
+                </div>
+                <!-- Right zone -->
+                <?php if (isset($blocks['8'])) { ?>
+                    <div class="col-md-4 pi-zone-8">
+                        <?php foreach ($blocks['8'] as $block) {
+                            include $blockTemplate;
+                        } ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <!-- Bottom foot zone -->
+            <?php if (isset($blocks['99'])) { ?>
+                <div class="pi-zone-99">
+                    <?php foreach ($blocks['99'] as $block) {
+                        include $blockTemplate;
+                    } ?>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<!-- Footer: sitelink -->
+<footer class="pi-footer">
+    <div class="pi-footer-text">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="text-center col-md-12 col-xs-12">
+                    <h2>فروشگاه آنلاین OSPORT</h2>
+                    <h3>شعاری مناسب با اتفاقات و ویژگی های ما</h3>
+                    <p>فروشگاه آنلاین مُدیسه با استفاده از تجربیات 50 ساله گروه تجاری گلستان، به تناسب خواسته‌های مخاطب، آغازگرِ نسل جدیدی از فروشگاه‌های اینترنتی است. دایره‌ی وسیعی از محصولات شامل انواع مدل‌ های لباس زنانه (کیف، کفش، پیراهن،‌ مانتو، لباس مجلسی، شال، روسری، پالتو، شلوار، عینک آفتابی، بلوز، دامن، تونیک، شومیز و ...)، پوشاک مردانه (تی شرت، پیراهن، شلوار، کت، کمربند، کلاه، دستکش، کفش، کیف، بارانی، پالتو،‌ کاپشن و ...)، لوازم آرایشی و بهداشتی و عطر و ادکلن، محصولات ورزشی (لباس و کفش ورزشی، اکسسوری ورزشی، اسکوتر و ...) محصولات کودک و نوزاد (اسباب بازی، لوازم تحریر، بادی، لباس راحتی، جوراب، شلوار، زیورآلات، شیشه شیر، ظرف غذا و ...) و محصولات خواب و حمام( بالش و پتو، روتختی و کاور، حوله، کوسن و پادری)     کالاهای آشپزخانه (سرویس‌های غذاخوری، سینی، ماگ، ظروف میوه و شیرینی، فلاسک و ...) خوراکی (قهوه، چای، شکلات، بیسکویت، دمنوش، تنقلات، ادویه جات و ...) و لوازم جانبی الکترونیک (هدفون، هدست، اسپیکر، کیف و کاور، کابل، شارژر، پاوربانک) در مدیسه عرضه می‌شوند. مدیسه به عنوان بزرگترین فروشگاه اینترنتی پوشاک ایران ضمن تضمین اصالت تمامی کالاها، به شما اطمینان می‌دهد با قیمتی مناسب، محصولی اصل از برترین برندهای جهان از قبیل Bershka, Pull&Bear, U.S Polo, Reebok, Nike, Adidas, Lc Waikiki, Mango, Versace, Chanel, BVLGARI, Zara و ... را به دست شما می‌رساند و تجربه‌ی خرید اینترنتی لذت‌بخشی را خواهید داشت. علاوه بر این برندهای نام آشنا در ایران، مدیسه عرضه کننده‌ی برخی از معتبرترین برندهای جهانی است که پیش از این کمتر در ایران شناخته شده بودند. برندهایی آمریکایی نظیر TCP ,Nine West و یا برند فرانسوی Celio که هم‌زمان با فروش در فروشگاه‌‌های معتبر جهان، در مدیسه نیز عرضه می‌شوند. کالای خریداری شده از مدیسه در طول ایام هفته در ظرف 24 ساعت بدون هیچ هزینه اضافی (برای خریدهای بالای یکصد هزار تومان) تحویل داده می‌شود و امکان پرداخت در محل نیز وجود دارد. شما می‌توانید در صورت عدم رضایت، محصول خریداری شده را تا 7 روز پس از خرید، عودت دهید و هزینه خود را به صورت کامل دریافت کنید.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pi-footer-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <h4>درباره ما</h4>
+                    <p>آنلاین اسپورت سامانه آنلاین ورزش ایران است که به صورت تخصصی به موضوع ورزش در رشته های مختلف می پردازد. این سامانه برای این است تا مرجعی برای تمام ورزشکاران و ورزش دوستان باشد.</p>
+                    <ul class="list-unstyled">
+                        <li><a title="OSPORT چیست؟" href="#">OSPORT چیست؟</a></li>
+                        <li><a title="مزایای OSPORT" href="#">مزایای OSPORT</a></li>
+                        <li><a title="تامین کنندگان" href="#">تامین کنندگان</a></li>
+                        <li><a title="استخدام در OSPORT" href="#">استخدام در OSPORT</a></li>
+                        <li><a title="همکاری با ما" href="#">همکاری با ما</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <h4>راهنمای OSPORT</h4>
+                    <ul class="list-unstyled">
+                        <li><a title="پرسش های متداول" href="#">پرسش های متداول</a></li>
+                        <li><a title="روش های بازگردادن کالا" href="#">روش های بازگردادن کالا</a></li>
+                        <li><a title="شرایط و قوانین" href="#">شرایط و قوانین</a></li>
+                        <li><a title="حریم خصوصی" href="#">حریم خصوصی</a></li>
+                        <li><a title="کنترل کیفیت" href="#">کنترل کیفیت</a></li>
+                        <li><a title="درباره OSPORT" href="#">درباره OSPORT</a></li>
+                        <li><a title="تماس با OSPORT" href="#">تماس با OSPORT</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <h4>فروشگاه ورزشی</h4>
+                    <ul class="list-unstyled">
+                        <li><a title="محصولات تیمی" href="http://www.osport.ir/shop/team-sports">محصولات تیمی</a></li>
+                        <li><a title="محصولات رزمی" href="http://www.osport.ir/shop/martial-art">محصولات رزمی</a></li>
+                        <li><a title="محصولات فیتنس" href="http://www.osport.ir/shop/fitness">محصولات فیتنس</a></li>
+                        <li><a title="محصولات راکتی" href="http://www.osport.ir/shop/racquet-sports">محصولات راکتی</a></li>
+                        <li><a title="محصولات اکشن" href="http://www.osport.ir/shop/action">محصولات اکشن</a></li>
+                        <li><a title="محصولات تمرکزی" href="http://www.osport.ir/shop/concentration-sports">محصولات تمرکزی</a></li>
+                        <li><a title="محصولات آبی" href="http://www.osport.ir/shop/aqua-sports">محصولات آبی</a></li>
+                        <li><a title="محصولات زمستانی" href="http://www.osport.ir/shop/winter-sports">محصولات زمستانی</a></li>
+                        <li><a title="محصولات هوای آزاد" href="http://www.osport.ir/shop/outdoor-sports">محصولات هوای آزاد</a></li>
+                        <li><a title="محصولات عمومی" href="http://www.osport.ir/shop/general-sports">محصولات عمومی</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <h4>ویدیو های ورزشی</h4>
+                    <ul class="list-unstyled">
+                        <li><a title="ویدیو های تیمی" href="http://www.osport.ir/video/team-sports">ویدیو های تیمی</a></li>
+                        <li><a title="ویدیو های رزمی" href="http://www.osport.ir/video/martial-art">ویدیو های رزمی</a></li>
+                        <li><a title="ویدیو های فیتنس" href="http://www.osport.ir/video/fitness">ویدیو های فیتنس</a></li>
+                        <li><a title="ویدیو های راکتی" href="http://www.osport.ir/video/racquet-sports">ویدیو های راکتی</a></li>
+                        <li><a title="ویدیو های اکشن" href="http://www.osport.ir/video/action">ویدیو های اکشن</a></li>
+                        <li><a title="ویدیو های تمرکزی" href="http://www.osport.ir/video/concentration-sports">ویدیو های تمرکزی</a></li>
+                        <li><a title="ویدیو های آبی" href="http://www.osport.ir/video/aqua-sports">ویدیو های آبی</a></li>
+                        <li><a title="ویدیو های زمستانی" href="http://www.osport.ir/video/winter-sports">ویدیو های زمستانی</a></li>
+                        <li><a title="ویدیو های هوای آزاد" href="http://www.osport.ir/video/outdoor-sports">ویدیو های هوای آزاد</a></li>
+                        <li><a title="ویدیو های عمومی" href="http://www.osport.ir/video/general-sports">ویدیو های عمومی</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <ul class="list-inline">
+                        <li>
+                            <img class="img-responsive" src="<?php echo $this->assetTheme('image/behpardakht.png'); ?>" alt="به پرداخت">
+                        </li>
+                        <li>
+                            <img class="img-responsive" id="drftbrgwrgvlbrgwrgvl" onclick="window.open('http://trustseal.enamad.ir/Verify.aspx?id=16565&p=nbpdhwmbyncrhwmbyncr', 'Popup','toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30')" alt="نماد اعتماد الکترونیک" src="http://trustseal.enamad.ir/logo.aspx?id=16565&p=lznbkzoefujykzoefujy">
+                        </li>
+                    </ul>
+                    <div class="pi-footer-social">
+                        <p class="text-en">Join Us ...</p>
+                        <p>شبکه های اجتماعی</p>
+                        <ul class="list-inline">
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a title="" href="#"><i class="fa fa-facebook"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pi-footer-copyright">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="text-left col-md-6 col-xs-12" data-rel="license"> تمام حقوق مطالب برای وب سایت <a title="<?php echo _escape($sitename); ?>" href="http://www.osport.ir"><?php echo _escape($sitename); ?></a> محفوظ است.</div>
+                <div class="text-right col-md-6 col-xs-12" data-rel="license"> توسعه <a title="فراگسترش" href="http://www.faragostaresh.com" target="_blank">فراگسترش</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<?php echo $this->conditions() ?>
+</body>
+</html>
