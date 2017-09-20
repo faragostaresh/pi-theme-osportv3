@@ -23,24 +23,24 @@ a:hover {
 
 h1 {
     font-size: 22px;
-    font-family: 'Vazir-Bold';
+    font-family: 'IRANSans';
 }
 
 h2 {
     font-size: 18px;
-    font-family: 'Vazir-Bold';
+    font-family: 'IRANSans';
 }
 
 h3, h4 {
     font-size: 16px;
-    font-family: 'Vazir-Bold';
+    font-family: 'IRANSans';
     padding: 2px 0;
     margin: 1px 0;
 }
 
 h5, h6 {
     font-size: 15px;
-    font-family: 'Vazir-Bold';
+    font-family: 'IRANSans';
 }
 
 .text-en {
