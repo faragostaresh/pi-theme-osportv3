@@ -104,9 +104,15 @@ $userBar = $this->widget('system-user-bar', array(
     'show_message'    => 'merge',
     'show_support'    => 0,
     'show_order'      => 1,
-    'show_credit'     => 1,
+    'show_credit'     => 0,
     'show_favourite'  => 0,
 ));
+
+$uid     = Pi::user()->getId();
+$roles   = Pi::user()->getRole($uid, 'front');
+if (!in_array('webmaster', $roles)) {
+    return false;
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo $locale; ?>">
@@ -120,7 +126,7 @@ $userBar = $this->widget('system-user-bar', array(
     <div class="pi-header-top clearfix hidden-xs">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
                     <div class="row clearfix">
                         <div class="col-md-12 col-xs-12">
                             <?php echo $userBar; ?>
@@ -140,7 +146,7 @@ $userBar = $this->widget('system-user-bar', array(
         <div class="pi-header-nav navbar navbar-default clearfix">
             <div class="container-fluid">
                 <div class="row" itemscope itemtype="https://schema.org/SiteNavigationElement">
-                    <nav class="col-md-8 col-md-offset-2 col-xs-12 clearfix">
+                    <nav class="col-md-10 col-md-offset-1 col-xs-12 clearfix">
                         <div class="navbar-header pi-header-left">
                             <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <i class="fa fa-bars"></i>
@@ -162,32 +168,32 @@ $userBar = $this->widget('system-user-bar', array(
                         <div class="navbar-collapse collapse pi-header-right">
                             <ul class="nav navbar-nav navbar-right pi-navbar-nav animated fadeInUp clearfix">
                                 <li<?php if ($module == 'system') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir" title="خانه">
+                                    <a itemprop="url" href="https://www.osport.ir" title="خانه">
                                         <span itemprop="name">خانه</span>
                                     </a>
                                 </li>
                                 <li<?php if ($module == 'shop') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir/shop" title="فروشگاه">
+                                    <a itemprop="url" href="https://www.osport.ir/shop" title="فروشگاه">
                                         <span itemprop="name">فروشگاه</span>
                                     </a>
                                 </li>
                                 <li<?php if ($module == 'video') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir/video" title="ویدیو ها">
+                                    <a itemprop="url" href="https://www.osport.ir/video" title="ویدیو ها">
                                         <span itemprop="name">ویدیو ها</span>
                                     </a>
                                 </li>
                                 <li<?php if ($module == 'news') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir/news" title="علم ورزش">
+                                    <a itemprop="url" href="https://www.osport.ir/news" title="علم ورزش">
                                         <span itemprop="name">علم ورزش</span>
                                     </a>
                                 </li>
                                 <li<?php if ($module == 'guide') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir/guide" title="مربیان و باشگاه ها">
+                                    <a itemprop="url" href="https://www.osport.ir/guide" title="مربیان و باشگاه ها">
                                         <span itemprop="name">مربیان و باشگاه ها</span>
                                     </a>
                                 </li>
                                 <li<?php if ($module == 'talent') { ?> class="active"<?php } ?>>
-                                    <a itemprop="url" href="http://www.osport.ir/talent" title="استعداد یابی">
+                                    <a itemprop="url" href="https://www.osport.ir/talent" title="استعداد یابی">
                                         <span itemprop="name">استعداد یابی</span>
                                     </a>
                                 </li>
@@ -209,7 +215,7 @@ $userBar = $this->widget('system-user-bar', array(
         <div class="header-search-bg">
             <!-- Top head zone -->
             <?php if ($module == 'system') { ?>
-                <?php echo $this->widget('widget-highlights'); ?>
+                <?php echo $this->widget('widget-mainslide'); ?>
             <?php } else { ?>
                 <div class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
@@ -245,20 +251,116 @@ $userBar = $this->widget('system-user-bar', array(
 <section class="pi-section">
     <?php if ($module == 'system') { ?>
         <div class="pi-section-search">
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         <div class="pi-section-search-box clearfix">
-                            d
-
-                        </div>
-                        <div class="pi-section-search-box clearfix">
-                            d
-
+                            <div class="pi-section-search-nav">
+                                <ul class="list-inline">
+                                    <li><strong>جستجو در</strong></li>
+                                    <li class="pi-section-search-nav-item pi-section-search-nav-item-active">فروشگاه</li>
+                                    <li class="pi-section-search-nav-item">ویدیو ها</li>
+                                    <li class="pi-section-search-nav-item">مربیان و باشگاه ها</li>
+                                </ul>
+                            </div>
+                            <div class="pi-section-search-shop col-md-10 col-md-offset-1 col-xs-12">
+                                <form class="form-horizontal" method="get" action="#">
+                                    <div class="form-group">
+                                        <label class="col-md-3">عنوان</label>
+                                        <input name="title" type="text" class="col-md-9 form-control pi-section-search-title" placeholder="عنوان کالا">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3">نوع محصول</label>
+                                        <select class="col-md-9 form-control pi-section-search-productkind" name="productkind">
+                                            <option value="">همه</option>
+                                            <option value="لباس">لباس</option>
+                                            <option value="کفش">کفش</option>
+                                            <option value="تجهیزات جانبی">تجهیزات جانبی</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3">نوع برند</label>
+                                        <select class="col-md-9 form-control pi-section-search-brandtype" name="brandtype">
+                                            <option value="">همه</option>
+                                            <option value="برند خارجی">برند خارجی</option>
+                                            <option value="برند داخلی">برند داخلی</option>
+                                            <option value="کپی با کیفیت">کپی با کیفیت</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3">سایز لباس</label>
+                                        <select class="col-md-9 form-control pi-section-search-size" name="size">
+                                            <option value="">همه</option>
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                            <option value="XXXL">XXXL</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3">رنگ</label>
+                                        <select class="col-md-9 form-control pi-section-search-color" name="color">
+                                            <option value="">همه</option>
+                                            <option value="سفید">سفید</option>
+                                            <option value="مشکی">مشکی</option>
+                                            <option value="زرد">زرد</option>
+                                            <option value="آبی">آبی</option>
+                                            <option value="قرمز">قرمز</option>
+                                            <option value="سبز">سبز</option>
+                                            <option value="نارنجی">نارنجی</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3">کشور سازنده</label>
+                                        <select class="col-md-9 form-control pi-section-search-country" name="country">
+                                            <option value="">همه</option>
+                                            <option value="ایران">ایران</option>
+                                            <option value="آمریکا">آمریکا</option>
+                                            <option value="انگلیس">انگلیس</option>
+                                            <option value="ایتالیا">ایتالیا</option>
+                                            <option value="آلمان">آلمان</option>
+                                            <option value="فرانسه">فرانسه</option>
+                                            <option value="ترکیه">ترکیه</option>
+                                            <option value="روسیه">روسیه</option>
+                                            <option value="چین">چین</option>
+                                            <option value="هند">هند</option>
+                                            <option value="ویتنام">ویتنام</option>
+                                            <option value="تایلند">تایلند</option>
+                                            <option value="ژاپن">ژاپن</option>
+                                            <option value="کره">کره</option>
+                                            <option value="تایوان">تایوان</option>
+                                            <option value="پاکستان">پاکستان</option>
+                                            <option value="بنگلادش">بنگلادش</option>
+                                            <option value="مالزی">مالزی</option>
+                                            <option value="اندونزی">اندونزی</option>
+                                            <option value="استرالیا">استرالیا</option>
+                                            <option value="کانادا">کانادا</option>
+                                            <option value="برزیل">برزیل</option>
+                                            <option value="آرژانتین">آرژانتین</option>
+                                            <option value="دانمارک">دانمارک</option>
+                                            <option value="هلند">هلند</option>
+                                            <option value="اسپانیا">اسپانیا</option>
+                                        </select>
+                                    </div>
+                                    <a class="btn btn-default pi-section-search-btn col-md-8 col-md-offset-2">جستجو</a>
+                                </form>
+                            </div>
+                            <div class="pi-section-search-codearea col-md-10 col-md-offset-1 col-xs-12">
+                                <p>در صورت داشتن کد کالای مورد نظرتان، آن را در این قسمت وارد نمایید</p>
+                                <form class="form-inline" method="get" action="#">
+                                    <div class="form-group">
+                                        <label>کد کالا</label>
+                                        <input name="title" type="text" class="form-control pi-section-search-code" placeholder="کد کالا را وارد کنید">
+                                    </div>
+                                    <a class="btn btn-default pi-section-search-btn">جستجو</a>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xs-12 hidden-xs ">
+                    <div class="col-md-6 col-xs-12 hidden-xs">
                         <div class="pi-section-search-image clearfix">
                             <a title="" href="#">
                                 <img class="img-responsive" src="<?php echo $this->assetTheme('image/tabligh1.jpg'); ?>" alt="">
@@ -272,13 +374,74 @@ $userBar = $this->widget('system-user-bar', array(
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <?php echo $this->widget('widget-brand'); ?>
+                        <?php echo $this->widget('widget-brands'); ?>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="pi-section-box">
-
+        <div class="pi-section-join">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <div class="col-md-6 col-xs-12">
+                        <h3>عضویت در تلگرام OSPORT</h3>
+                        <h4>کد های تخفیف، کالاهای رایگان، مجموعه های جدید</h4>
+                        <p><a class="btn btn-default" href="">عضویت</a></p>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <h3>با عضویت در خبرنامه</h3>
+                        <h4>۳۵۰۰۰ تخفیف اولین خرید</h4>
+                        <p><a class="btn btn-default" href="">عضویت</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-shop clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="pi-section-title clearfix">
+                            <h2 class="no-span">دسته بندی فروشگاه محصولات تخصصی</h2>
+                        </div>
+                        <?php echo $this->widget('widget-category'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-news clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="pi-section-title clearfix">
+                            <h2 class="no-span">علم ورزش</h2>
+                        </div>
+                        <?php echo $this->widget('news-item'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-video clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="pi-section-title clearfix">
+                            <h2 class="no-span">ویدیو ها</h2>
+                        </div>
+                        <?php echo $this->widget('video-video-new'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pi-section-guide clearfix">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="pi-section-title clearfix">
+                            <h2 class="no-span">مربیان و باشگاه ها</h2>
+                        </div>
+                        <?php echo $this->widget('guide-item-new'); ?>
+                    </div>
+                </div>
+            </div>
         </div>
     <?php } ?>
     <div class="container-fluid">
@@ -445,31 +608,31 @@ $userBar = $this->widget('system-user-bar', array(
                 <div class="col-md-2 col-xs-12">
                     <h4>فروشگاه ورزشی</h4>
                     <ul class="list-unstyled">
-                        <li><a title="محصولات تیمی" href="http://www.osport.ir/shop/team-sports">محصولات تیمی</a></li>
-                        <li><a title="محصولات رزمی" href="http://www.osport.ir/shop/martial-art">محصولات رزمی</a></li>
-                        <li><a title="محصولات فیتنس" href="http://www.osport.ir/shop/fitness">محصولات فیتنس</a></li>
-                        <li><a title="محصولات راکتی" href="http://www.osport.ir/shop/racquet-sports">محصولات راکتی</a></li>
-                        <li><a title="محصولات اکشن" href="http://www.osport.ir/shop/action">محصولات اکشن</a></li>
-                        <li><a title="محصولات تمرکزی" href="http://www.osport.ir/shop/concentration-sports">محصولات تمرکزی</a></li>
-                        <li><a title="محصولات آبی" href="http://www.osport.ir/shop/aqua-sports">محصولات آبی</a></li>
-                        <li><a title="محصولات زمستانی" href="http://www.osport.ir/shop/winter-sports">محصولات زمستانی</a></li>
-                        <li><a title="محصولات هوای آزاد" href="http://www.osport.ir/shop/outdoor-sports">محصولات هوای آزاد</a></li>
-                        <li><a title="محصولات عمومی" href="http://www.osport.ir/shop/general-sports">محصولات عمومی</a></li>
+                        <li><a title="محصولات تیمی" href="https://www.osport.ir/shop/team-sports">محصولات تیمی</a></li>
+                        <li><a title="محصولات رزمی" href="https://www.osport.ir/shop/martial-art">محصولات رزمی</a></li>
+                        <li><a title="محصولات فیتنس" href="https://www.osport.ir/shop/fitness">محصولات فیتنس</a></li>
+                        <li><a title="محصولات راکتی" href="https://www.osport.ir/shop/racquet-sports">محصولات راکتی</a></li>
+                        <li><a title="محصولات اکشن" href="https://www.osport.ir/shop/action">محصولات اکشن</a></li>
+                        <li><a title="محصولات تمرکزی" href="https://www.osport.ir/shop/concentration-sports">محصولات تمرکزی</a></li>
+                        <li><a title="محصولات آبی" href="https://www.osport.ir/shop/aqua-sports">محصولات آبی</a></li>
+                        <li><a title="محصولات زمستانی" href="https://www.osport.ir/shop/winter-sports">محصولات زمستانی</a></li>
+                        <li><a title="محصولات هوای آزاد" href="https://www.osport.ir/shop/outdoor-sports">محصولات هوای آزاد</a></li>
+                        <li><a title="محصولات عمومی" href="https://www.osport.ir/shop/general-sports">محصولات عمومی</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-xs-12">
                     <h4>ویدیو های ورزشی</h4>
                     <ul class="list-unstyled">
-                        <li><a title="ویدیو های تیمی" href="http://www.osport.ir/video/team-sports">ویدیو های تیمی</a></li>
-                        <li><a title="ویدیو های رزمی" href="http://www.osport.ir/video/martial-art">ویدیو های رزمی</a></li>
-                        <li><a title="ویدیو های فیتنس" href="http://www.osport.ir/video/fitness">ویدیو های فیتنس</a></li>
-                        <li><a title="ویدیو های راکتی" href="http://www.osport.ir/video/racquet-sports">ویدیو های راکتی</a></li>
-                        <li><a title="ویدیو های اکشن" href="http://www.osport.ir/video/action">ویدیو های اکشن</a></li>
-                        <li><a title="ویدیو های تمرکزی" href="http://www.osport.ir/video/concentration-sports">ویدیو های تمرکزی</a></li>
-                        <li><a title="ویدیو های آبی" href="http://www.osport.ir/video/aqua-sports">ویدیو های آبی</a></li>
-                        <li><a title="ویدیو های زمستانی" href="http://www.osport.ir/video/winter-sports">ویدیو های زمستانی</a></li>
-                        <li><a title="ویدیو های هوای آزاد" href="http://www.osport.ir/video/outdoor-sports">ویدیو های هوای آزاد</a></li>
-                        <li><a title="ویدیو های عمومی" href="http://www.osport.ir/video/general-sports">ویدیو های عمومی</a></li>
+                        <li><a title="ویدیو های تیمی" href="https://www.osport.ir/video/team-sports">ویدیو های تیمی</a></li>
+                        <li><a title="ویدیو های رزمی" href="https://www.osport.ir/video/martial-art">ویدیو های رزمی</a></li>
+                        <li><a title="ویدیو های فیتنس" href="https://www.osport.ir/video/fitness">ویدیو های فیتنس</a></li>
+                        <li><a title="ویدیو های راکتی" href="https://www.osport.ir/video/racquet-sports">ویدیو های راکتی</a></li>
+                        <li><a title="ویدیو های اکشن" href="https://www.osport.ir/video/action">ویدیو های اکشن</a></li>
+                        <li><a title="ویدیو های تمرکزی" href="https://www.osport.ir/video/concentration-sports">ویدیو های تمرکزی</a></li>
+                        <li><a title="ویدیو های آبی" href="https://www.osport.ir/video/aqua-sports">ویدیو های آبی</a></li>
+                        <li><a title="ویدیو های زمستانی" href="https://www.osport.ir/video/winter-sports">ویدیو های زمستانی</a></li>
+                        <li><a title="ویدیو های هوای آزاد" href="https://www.osport.ir/video/outdoor-sports">ویدیو های هوای آزاد</a></li>
+                        <li><a title="ویدیو های عمومی" href="https://www.osport.ir/video/general-sports">ویدیو های عمومی</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-xs-12">
@@ -478,7 +641,7 @@ $userBar = $this->widget('system-user-bar', array(
                             <img class="img-responsive" src="<?php echo $this->assetTheme('image/behpardakht.png'); ?>" alt="به پرداخت">
                         </li>
                         <li>
-                            <img class="img-responsive" id="drftbrgwrgvlbrgwrgvl" onclick="window.open('http://trustseal.enamad.ir/Verify.aspx?id=16565&p=nbpdhwmbyncrhwmbyncr', 'Popup','toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30')" alt="نماد اعتماد الکترونیک" src="http://trustseal.enamad.ir/logo.aspx?id=16565&p=lznbkzoefujykzoefujy">
+                            <img class="img-responsive" id="drftbrgwrgvlbrgwrgvl" onclick="window.open('https://trustseal.enamad.ir/Verify.aspx?id=16565&p=nbpdhwmbyncrhwmbyncr', 'Popup','toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30')" alt="نماد اعتماد الکترونیک" src="https://trustseal.enamad.ir/logo.aspx?id=16565&p=lznbkzoefujykzoefujy">
                         </li>
                     </ul>
                     <div class="pi-footer-social">
@@ -499,7 +662,7 @@ $userBar = $this->widget('system-user-bar', array(
     <div class="pi-footer-copyright">
         <div class="container-fluid">
             <div class="row">
-                <div class="text-left col-md-6 col-xs-12" data-rel="license"> تمام حقوق مطالب برای وب سایت <a title="<?php echo _escape($sitename); ?>" href="http://www.osport.ir"><?php echo _escape($sitename); ?></a> محفوظ است.</div>
+                <div class="text-left col-md-6 col-xs-12" data-rel="license"> تمام حقوق مطالب برای وب سایت <a title="<?php echo _escape($sitename); ?>" href="https://www.osport.ir"><?php echo _escape($sitename); ?></a> محفوظ است.</div>
                 <div class="text-right col-md-6 col-xs-12" data-rel="license"> توسعه <a title="فراگسترش" href="http://www.faragostaresh.com" target="_blank">فراگسترش</a></div>
             </div>
         </div>

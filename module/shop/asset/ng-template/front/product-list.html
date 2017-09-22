@@ -1,0 +1,240 @@
+<div class="clearfix pi-item-list">
+    <div class="col-md-3 col-xs-12">
+        <div class="pi-item-search-form clearfix well well-sm">
+            <div class="page-header">
+                <h3>{{'SEARCH' | translate}}</h3>
+            </div>
+            <form id="list-filter" ng-submit="filterAction()">
+                <div class="form-group">
+                    <label>{{'TITLE' | translate}}</label>
+                    <input type="text" class="form-control" ng-model="filter.title" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                </div>
+                <div class="form-group">
+                    <label>{{'CODE' | translate}}</label>
+                    <input type="text" class="form-control" ng-model="filter.code" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                </div>
+                <div ng-if="condition.priceFilter == 1">
+                    <div class="form-group">
+                        <rzslider class="custom-slider"
+                                  rz-slider-model="slider.minValue"
+                                  rz-slider-high="slider.maxValue"
+                                  rz-slider-options="slider.options"></rzslider>
+                    </div>
+                </div>
+
+
+                <div class="ng-scope">
+
+                    <div class="form-group">
+                        <label>نوع محصول</label>
+                        <select class="form-control" ng-model="filter.productkind" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="لباس">لباس</option>
+                            <option value="کفش">کفش</option>
+                            <option value="تجهیزات جانبی">تجهیزات جانبی</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>جنسیت</label>
+                        <select class="form-control" ng-model="filter.sdf" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="مردانه">مردانه</option>
+                            <option value="زنانه">زنانه</option>
+                            <option value="بچه گانه">بچه گانه</option>
+                            <option value="عمومی">عمومی</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>نوع برند</label>
+                        <select class="form-control" ng-model="filter.brandtype" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="برند خارجی">برند خارجی</option>
+                            <option value="برند داخلی">برند داخلی</option>
+                            <option value="کپی با کیفیت">کپی با کیفیت</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>سایز لباس</label>
+                        <select class="form-control" ng-model="filter.size" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>رنگ</label>
+                        <select class="form-control" ng-model="filter.color" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="سفید">سفید</option>
+                            <option value="مشکی">مشکی</option>
+                            <option value="زرد">زرد</option>
+                            <option value="آبی">آبی</option>
+                            <option value="قرمز">قرمز</option>
+                            <option value="سبز">سبز</option>
+                            <option value="نارنجی">نارنجی</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>کشور سازنده</label>
+                        <select class="form-control" ng-model="filter.country" ng-change="filterAction()" ng-model-options="{ debounce: 5000 }">
+                            <option value="">همه</option>
+                            <option value="ایران">ایران</option>
+                            <option value="آمریکا">آمریکا</option>
+                            <option value="انگلیس">انگلیس</option>
+                            <option value="ایتالیا">ایتالیا</option>
+                            <option value="آلمان">آلمان</option>
+                            <option value="فرانسه">فرانسه</option>
+                            <option value="ترکیه">ترکیه</option>
+                            <option value="روسیه">روسیه</option>
+                            <option value="چین">چین</option>
+                            <option value="هند">هند</option>
+                            <option value="ویتنام">ویتنام</option>
+                            <option value="تایلند">تایلند</option>
+                            <option value="ژاپن">ژاپن</option>
+                            <option value="کره">کره</option>
+                            <option value="تایوان">تایوان</option>
+                            <option value="پاکستان">پاکستان</option>
+                            <option value="بنگلادش">بنگلادش</option>
+                            <option value="مالزی">مالزی</option>
+                            <option value="اندونزی">اندونزی</option>
+                            <option value="استرالیا">استرالیا</option>
+                            <option value="کانادا">کانادا</option>
+                            <option value="برزیل">برزیل</option>
+                            <option value="آرژانتین">آرژانتین</option>
+                            <option value="دانمارک">دانمارک</option>
+                            <option value="هلند">هلند</option>
+                            <option value="اسپانیا">اسپانیا</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+                <div class="text-center">
+                    <button class="btn btn-info" ng-click="filterAction()">
+                        <i class="fa fa-search"></i> {{'SEARCH' | translate}}
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="clearfix category-list">
+            <div class="page-header">
+                <h3>{{'CATEGORY_LIST' | translate}}</h3>
+            </div>
+            <div class="clearfix">
+                <div class="pi-item-category"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 col-xs-12">
+        <div class="pi-item-compare-list hide">
+            <div class="clearfix">
+                <div class="col-md-2 col-xs-6">
+                    <div class="pi-item-compare-button text-center">
+                        <a href="{{condition.urlCompare}}" title="{{'COMPARE_PRODUCTS' | translate}}" class="btn btn-success btn-xs">
+                            {{'COMPARE_PRODUCTS' | translate}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="compareModal" tabindex="-1" role="dialog" aria-labelledby="compareModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="{{'CLOSE' | translate}}">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="compareModalLabel">{{'COMPARE_PRODUCTS' | translate}}</h4>
+                        </div>
+                        <div class="modal-body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="page-header">
+                <h1>{{condition.title}}</h1>
+            </div>
+            <div ng-show="products.length">
+                <div class="row">
+                    <div ng-repeat="product in products">
+                        <div class="{{condition.columnSize}}">
+                            <div class="pi-item-box pi-item-box-size-{{condition.addToCart}}">
+                                <div class="thumbnail" ng-mouseover="hoverCompare = true" ng-mouseleave="hoverCompare = false">
+                                    <div class="pi-item-box-image">
+                                        <div ng-show="hoverCompare"
+                                             ng-click="changeClass()"
+                                             ng-class="class"
+                                             data-title="{{product.title}}"
+                                             data-slug="{{product.slug}}"
+                                             data-image="{{product.mediumUrl}}"
+                                             class="pi-item-compare-add">
+                                            <i class="fa fa-plus"></i> {{'COMPARE' | translate}}
+                                        </div>
+                                        <a class="u-url {{product.ribbon_class}}" itemprop="url" title="{{product.title}}" href="{{product.productUrl}}" target="_blank">
+                                            <img itemprop="image" class="img-responsive u-photo" src="{{product.mediumUrl}}" alt="{{product.title}}"/>
+                                            <p ng-if="product.ribbon">
+                                                <span>{{product.ribbon}}</span>
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <div class="caption">
+                                        <div class="pi-item-box-title">
+                                            <h3 class="p-name" itemprop="name">
+                                                <a title="{{product.title}}" href="{{product.productUrl}}" target="_blank">
+                                                    {{product.title}}
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div class="pi-item-box-extra clearfix" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                                            <div class="clearfix">
+                                                <div ng-if="product.price_discount_has == 1">
+                                                    <div class="pi-item-box-discount text-danger">
+                                                        <del>{{product.price_discount_view}}</del>
+                                                    </div>
+                                                </div>
+                                                <div class="pi-item-box-price p-price" itemprop="price" content="{{product.price}}">
+                                                    {{product.price_view}}
+                                                </div>
+                                                <div ng-if="condition.addToCart == 1">
+                                                    <div ng-if="product.marketable == 1">
+                                                        <div class="pi-item-box-form">
+                                                            <form action="{{product.cartUrl}}" method="post">
+                                                                <input name="id" type="hidden" value="{{product.id}}">
+                                                                <button type="submit" class="btn btn-success btn-xs">
+                                                                    <i class="fa fa-shopping-cart"></i> {{'ADD_TO_CART' | translate}}
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <meta itemprop="priceCurrency" content="{{product.price_currency}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pi-paginator">
+                    <pagination ng-if="paginator.count > paginator.limit"
+                                total-items="paginator.count" page="paginator.page" max-size="10"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                                boundary-links="true" items-per-page="paginator.limit">
+                    </pagination>
+                </div>
+            </div>
+            <div class="alert alert-info" ng-if="!products.length">
+                {{'NONE_PRODUCT' | translate}}
+            </div>
+        </div>
+    </div>
+</div>

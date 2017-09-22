@@ -425,7 +425,6 @@ form .icon-question-sign {
 
 .pi-header .header-search {
     position: relative;
-
 }
 
 .pi-header .header-search .header-search-box {
@@ -471,7 +470,6 @@ form .icon-question-sign {
         padding-top: 10px;
     }
 }
-
 /* section */
 .pi-section {
 }
@@ -494,11 +492,137 @@ form .icon-question-sign {
     padding: 25px;
 }
 
+.pi-section .pi-section-search .pi-section-search-box .pi-section-search-nav {
+    margin-bottom: 25px;
+}
+
+.pi-section .pi-section-search .pi-section-search-box .pi-section-search-nav .pi-section-search-nav-item {
+    border: 1px solid #f95b1e;
+    border-radius: 25px;
+}
+
+.pi-section .pi-section-search .pi-section-search-box .pi-section-search-nav .pi-section-search-nav-item-active {
+    background: #f95b1e;
+    color: #fff;
+}
+
+.pi-section .pi-section-search .pi-section-search-box .pi-section-search-codearea {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .pi-section .pi-section-search .pi-section-search-box .pi-section-search-nav {
+        display: none;
+    }
+}
+
 .pi-section .pi-section-search .pi-section-search-image {
     margin-left: -15px !important;
     margin-right: -15px !important;
 }
 
+.pi-section .pi-section-join {
+    padding: 75px 0;
+    background: url('../image/section-join.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+}
+
+.pi-section .pi-section-join h3 {
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+.pi-section .pi-section-join h4 {
+    font-weight: lighter;
+    padding: 5px 0 25px 0;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .pi-section .pi-section-join .btn {
+        margin-bottom: 50px;
+    }
+}
+
+.pi-section .pi-section-shop {
+    padding: 45px 0;
+}
+
+.pi-section .pi-section-news {
+    padding: 45px 0;
+}
+
+.pi-section .pi-section-video {
+    padding: 45px 0;
+}
+
+.pi-section .pi-section-guide {
+    padding: 45px 0;
+}
+
+
+
+
+
+
+
+
+
+
+.pi-section .pi-section-title {
+    margin-bottom: 45px;
+}
+
+.pi-section .pi-section-title h2 {
+    text-align: center;
+}
+
+.pi-section .pi-section-title h2.no-span {
+    display: table;
+    white-space: nowrap;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pi-section .pi-section-title h2.no-span:before,
+.pi-section .pi-section-title h2.no-span:after {
+    border-top: 2px solid #ccc;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 0.5em;
+    width: 50%;
+}
+
+.pi-section .pi-section-title h2.no-span:before {
+    left: 30px;
+}
+
+.pi-section .pi-section-title h2.no-span:after {
+    right: 30px;
+}
+
+@media (max-width: 768px) {
+    .pi-section .pi-section-title h2.no-span:before,
+    .pi-section .pi-section-title h2.no-span:after {
+        width: 40%;
+    }
+
+    .pi-section .pi-section-title h2.no-span:before {
+        left: 15px;
+    }
+
+    .pi-section .pi-section-title h2.no-span:after {
+        right: 15px;
+    }
+}
 /* footer */
 .pi-footer .pi-footer-text {
     background: #f5f5f5;
@@ -642,4 +766,23 @@ form .icon-question-sign {
     top: 30%;
     right: 25px;
     display: block !important;
+}
+
+/* btn */
+.btn-default {
+    color: #fff;
+    background-color: #f95b1e;
+    border-color: #f95b1e;
+    border-radius: 25px;
+}
+.btn-default:focus,
+.btn-default.focus {
+    color: #fff;
+    background-color: #F9500A;
+    border-color: #F9500A;
+}
+.btn-default:hover {
+    color: #fff;
+    background-color: #F9500A;
+    border-color: #F9500A;
 }
