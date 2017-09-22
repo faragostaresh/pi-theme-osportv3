@@ -470,8 +470,19 @@ form .icon-question-sign {
         padding-top: 10px;
     }
 }
+
 /* section */
-.pi-section {
+.pi-section .pi-section-home a {
+    color: #1a1a1a;
+}
+
+.pi-section .pi-section-home h2,
+.pi-section .pi-section-home h3,
+.pi-section .pi-section-home h4 {
+    font-size: 14px !important;
+    font-weight: bold;
+    padding: 15px 0;
+    margin: 1px 0;
 }
 
 .pi-section .pi-module-content {
@@ -562,18 +573,30 @@ form .icon-question-sign {
     padding: 45px 0;
 }
 
+@media (min-width: 768px) {
+    .pi-section .pi-section-video .container-fluid {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+
+    .pi-section .pi-section-video img {
+        width: 100%;
+    }
+
+    .pi-section .pi-section-video h4 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-height: 3em;
+    }
+
+    .pi-section .pi-section-video .videoBox {
+        margin-bottom: 25px;
+    }
+}
+
 .pi-section .pi-section-guide {
     padding: 45px 0;
 }
-
-
-
-
-
-
-
-
-
 
 .pi-section .pi-section-title {
     margin-bottom: 45px;
@@ -623,6 +646,7 @@ form .icon-question-sign {
         right: 15px;
     }
 }
+
 /* footer */
 .pi-footer .pi-footer-text {
     background: #f5f5f5;
@@ -775,12 +799,14 @@ form .icon-question-sign {
     border-color: #f95b1e;
     border-radius: 25px;
 }
+
 .btn-default:focus,
 .btn-default.focus {
     color: #fff;
     background-color: #F9500A;
     border-color: #F9500A;
 }
+
 .btn-default:hover {
     color: #fff;
     background-color: #F9500A;

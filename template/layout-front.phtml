@@ -107,12 +107,6 @@ $userBar = $this->widget('system-user-bar', array(
     'show_credit'     => 0,
     'show_favourite'  => 0,
 ));
-
-$uid     = Pi::user()->getId();
-$roles   = Pi::user()->getRole($uid, 'front');
-if (!in_array('webmaster', $roles)) {
-    return false;
-}
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo $locale; ?>">
@@ -250,7 +244,7 @@ if (!in_array('webmaster', $roles)) {
 <!-- Page main content: breadcrumb, flash-messenger, blocks and module content -->
 <section class="pi-section">
     <?php if ($module == 'system') { ?>
-        <div class="pi-section-search">
+        <div class="pi-section-search clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
@@ -370,7 +364,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-brand">
+        <div class="pi-section-brand clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
@@ -379,7 +373,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-join">
+        <div class="pi-section-join pi-section-home clearfix">
             <div class="container-fluid">
                 <div class="row text-center">
                     <div class="col-md-6 col-xs-12">
@@ -395,7 +389,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-shop clearfix">
+        <div class="pi-section-shop pi-section-home clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
@@ -407,7 +401,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-news clearfix">
+        <div class="pi-section-news pi-section-home clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
@@ -419,7 +413,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-video clearfix">
+        <div class="pi-section-video pi-section-home clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
@@ -431,7 +425,7 @@ if (!in_array('webmaster', $roles)) {
                 </div>
             </div>
         </div>
-        <div class="pi-section-guide clearfix">
+        <div class="pi-section-guide pi-section-home clearfix">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
