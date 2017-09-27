@@ -17,6 +17,7 @@
             navbar.css('marginLeft', '-15px');
         }
     });
+    
     $(document).ready(function() {
         $('.pi-section-search-shop .pi-section-search-btn').click(function () {
             var title = $('.pi-section-search-shop .pi-section-search-title').val();
@@ -25,7 +26,7 @@
             var size = $('.pi-section-search-shop .pi-section-search-size').val();
             var color = $('.pi-section-search-shop .pi-section-search-color').val();
             var country = $('.pi-section-search-shop .pi-section-search-country').val();
-            var url = "http://www.osport.ir/shop/result/#!/search?";
+            var url = "https://www.osport.ir/shop/result/#!/search?";
             if (title) {
                 url = url + "title=" + title;
             }
@@ -47,10 +48,11 @@
             location.href = url;
         });
     });
+    
     $(document).ready(function() {
         $('.pi-section-search-codearea .pi-section-search-btn').click(function () {
-            var code = $('.pi-section-search-shop .pi-section-search-code').val();
-            var url = "http://www.osport.ir/shop/result/#!/search?";
+            var code = $('.pi-section-search-codearea .pi-section-search-code').val();
+            var url = "https://www.osport.ir/shop/result/#!/search?";
             if (code) {
                 url = url + "code=" + code;
             }

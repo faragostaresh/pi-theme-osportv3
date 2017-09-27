@@ -14,7 +14,7 @@ body {
 }
 
 a {
-    color: #f95b1e;
+    color: #1b1b1b;
 }
 
 a:hover {
@@ -495,6 +495,10 @@ form .icon-question-sign {
     padding: 25px 0;
 }
 
+.pi-section .pi-section-search{
+    background: #f5f5f5;
+}
+
 .pi-section .pi-section-search .pi-section-search-box {
     background: #f5f5f5;
     margin-left: -15px !important;
@@ -565,8 +569,33 @@ form .icon-question-sign {
     padding: 45px 0;
 }
 
+@media (min-width: 768px) {
+    .pi-section .pi-section-shop .container-fluid {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+}
+
 .pi-section .pi-section-news {
     padding: 45px 0;
+}
+
+@media (min-width: 768px) {
+    .pi-section .pi-section-news .container-fluid {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+}
+
+.pi-section .pi-section-guide {
+    padding: 45px 0;
+}
+
+@media (min-width: 768px) {
+    .pi-section .pi-section-guide .container-fluid {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
 }
 
 .pi-section .pi-section-video {
@@ -592,10 +621,6 @@ form .icon-question-sign {
     .pi-section .pi-section-video .videoBox {
         margin-bottom: 25px;
     }
-}
-
-.pi-section .pi-section-guide {
-    padding: 45px 0;
 }
 
 .pi-section .pi-section-title {
@@ -710,6 +735,12 @@ form .icon-question-sign {
     font-size: 16px;
 }
 
+.pi-footer-logo li {
+    background: #fff;
+    height: 140px;
+    border-radius: 8px;
+}
+
 @media (max-width: 768px) {
     .pi-footer .pi-footer-copyright .col-xs-12 {
         text-align: center !important;
@@ -762,16 +793,25 @@ form .icon-question-sign {
 
 /* owl */
 .owl-nav [class*='owl-'] {
-    background: inherit !important;
     font-size: 30px !important;
+    background: rgba(255, 255, 255, 0.9);
+    height: 40px;
+    width: 40px;
+    padding: 5px 15px 5px 15px;
+}
+
+.pi-section-brand .owl-nav [class*='owl-'] {
+    font-size: 30px !important;
+    background: inherit !important;
+    height: 40px;
+    width: 40px;
+    padding: 5px 15px 5px 15px;
+    color: #fff !important;
 }
 
 .owl-nav [class*='owl-']:hover {
     color: #f95b1e !important;
-}
-
-.owl-stage-outer {
-    margin: 0 80px !important;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .owl-next {
@@ -779,7 +819,7 @@ form .icon-question-sign {
     height: 100px;
     position: absolute;
     top: 30%;
-    left: 25px;
+    left: 0;
     display: block !important;
 }
 
@@ -788,7 +828,7 @@ form .icon-question-sign {
     height: 100px;
     position: absolute;
     top: 30%;
-    right: 25px;
+    right: 0;
     display: block !important;
 }
 

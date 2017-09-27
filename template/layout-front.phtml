@@ -347,7 +347,7 @@ $userBar = $this->widget('system-user-bar', array(
                                 <form class="form-inline" method="get" action="#">
                                     <div class="form-group">
                                         <label>کد کالا</label>
-                                        <input name="title" type="text" class="form-control pi-section-search-code" placeholder="کد کالا را وارد کنید">
+                                        <input name="code" type="text" class="form-control pi-section-search-code" placeholder="کد کالا را وارد کنید">
                                     </div>
                                     <a class="btn btn-default pi-section-search-btn">جستجو</a>
                                 </form>
@@ -562,17 +562,19 @@ $userBar = $this->widget('system-user-bar', array(
 </section>
 <!-- Footer: sitelink -->
 <footer class="pi-footer">
+    <?php if ($module == 'system') { ?>
     <div class="pi-footer-text">
         <div class="container-fluid">
             <div class="row">
                 <div class="text-center col-md-12 col-xs-12">
-                    <h2>فروشگاه آنلاین OSPORT</h2>
-                    <h3>شعاری مناسب با اتفاقات و ویژگی های ما</h3>
-                    <p>فروشگاه آنلاین مُدیسه با استفاده از تجربیات 50 ساله گروه تجاری گلستان، به تناسب خواسته‌های مخاطب، آغازگرِ نسل جدیدی از فروشگاه‌های اینترنتی است. دایره‌ی وسیعی از محصولات شامل انواع مدل‌ های لباس زنانه (کیف، کفش، پیراهن،‌ مانتو، لباس مجلسی، شال، روسری، پالتو، شلوار، عینک آفتابی، بلوز، دامن، تونیک، شومیز و ...)، پوشاک مردانه (تی شرت، پیراهن، شلوار، کت، کمربند، کلاه، دستکش، کفش، کیف، بارانی، پالتو،‌ کاپشن و ...)، لوازم آرایشی و بهداشتی و عطر و ادکلن، محصولات ورزشی (لباس و کفش ورزشی، اکسسوری ورزشی، اسکوتر و ...) محصولات کودک و نوزاد (اسباب بازی، لوازم تحریر، بادی، لباس راحتی، جوراب، شلوار، زیورآلات، شیشه شیر، ظرف غذا و ...) و محصولات خواب و حمام( بالش و پتو، روتختی و کاور، حوله، کوسن و پادری)     کالاهای آشپزخانه (سرویس‌های غذاخوری، سینی، ماگ، ظروف میوه و شیرینی، فلاسک و ...) خوراکی (قهوه، چای، شکلات، بیسکویت، دمنوش، تنقلات، ادویه جات و ...) و لوازم جانبی الکترونیک (هدفون، هدست، اسپیکر، کیف و کاور، کابل، شارژر، پاوربانک) در مدیسه عرضه می‌شوند. مدیسه به عنوان بزرگترین فروشگاه اینترنتی پوشاک ایران ضمن تضمین اصالت تمامی کالاها، به شما اطمینان می‌دهد با قیمتی مناسب، محصولی اصل از برترین برندهای جهان از قبیل Bershka, Pull&Bear, U.S Polo, Reebok, Nike, Adidas, Lc Waikiki, Mango, Versace, Chanel, BVLGARI, Zara و ... را به دست شما می‌رساند و تجربه‌ی خرید اینترنتی لذت‌بخشی را خواهید داشت. علاوه بر این برندهای نام آشنا در ایران، مدیسه عرضه کننده‌ی برخی از معتبرترین برندهای جهانی است که پیش از این کمتر در ایران شناخته شده بودند. برندهایی آمریکایی نظیر TCP ,Nine West و یا برند فرانسوی Celio که هم‌زمان با فروش در فروشگاه‌‌های معتبر جهان، در مدیسه نیز عرضه می‌شوند. کالای خریداری شده از مدیسه در طول ایام هفته در ظرف 24 ساعت بدون هیچ هزینه اضافی (برای خریدهای بالای یکصد هزار تومان) تحویل داده می‌شود و امکان پرداخت در محل نیز وجود دارد. شما می‌توانید در صورت عدم رضایت، محصول خریداری شده را تا 7 روز پس از خرید، عودت دهید و هزینه خود را به صورت کامل دریافت کنید.</p>
+                    <h2>فروشگاه اینترنتی آنلاین اسپرت</h2>
+                    <h3>مسیر انتخاب بهترین ها در ورزش</h3>
+                    <p>فروشگاه اینترنتی آنلاین اسپرت با هدف ایجاد یک رویکرد تخصصی در زمینه ارائه محصولات و تجهیزات ورزشی تاسیس گردیده و از همان آغاز اهداف خود را تضمین اصالت کالا،تهیه مستندات معرفی توانمند محصول،سرعت در ارسال و همراهی با مشتری از انتخاب تا استفاده قرار داده است.این فروشگاه اینترنتی توانسته است با استفاده از یک رویکرد علمی در پاسخگوی به نیاز‌های مشتریان در زمینه انواع پوشاک ورزشی برند‌های معتبری همچون نایک،آدیداس و لی نینگ،در زمینه انواع کفش های پیاده روی (Walking) و دویدن (Running) برندهای بسیار معتبر و متنوعی همچون آدیداس،نایک،نیوبالانس،اسکچرز،سالامون و مرل،در زمینه مایو و تجهیزات شنا و واتر پلو برندهای اسپیدو،توربو،بکو و سوانس،در زمینه محصولات مراقبتی،پزشکی و ارتوپدی برند بسیار مطرح و باکیفیت ال پی ساپورت،در زمینه توپ های اصل و اوریجینال برندهای آدیداس،نایک،آل اشپورت،میکاسا،مولتن و اسپالدینگ،در زمینه کفش ها و تجهیزات کوه نوردی و صخره نوردی محصولات و تجهیزات برندهای باکیفیتی چون سالامون،لا اسپورتیوا،پتزل و بئال،در زمینه انواع اسکیت و اسکیت بورد محصولات برندهای رولر بلید،فیلا و روسز و در زمینه انواع تجهیزات بدن سازی،بوکس و ورزشهای رزمی برند بسیار معتبر آدیداس و در زمینه انواع مکمل های بدن سازی برند های ویتاپ،ژن استار و فارمامیکس دارای تاییدیه سازمان غذا و داروی ورزارت بهداشت را به مشتریان خود ارائه نموده است. آنلاین اسپرت می‌کوشد لذت خرید اینترنتی در زمینه تجهیزات و محصولات ورزشی را با پاسخگوی و احترام به مشتری و اطلاع رسانی به وی از طریق انواع رسانه های سایت شامل مقالات،ویدئو و مقایسه و نیز ایجاد یک مکانیزم جستجوی توانمند بر اساس کد محصول،برند،رشته‌های مختلف ورزشی همچون فوتبال،والیبال،بسکتبال،شنا،بوکس و بدن سازی و نیز جستجو بر اساس محصول مانند راکت،توپ،کفش و ... به ارمغان آورد.</p>
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
     <div class="pi-footer-body">
         <div class="container-fluid">
             <div class="row">
@@ -580,23 +582,20 @@ $userBar = $this->widget('system-user-bar', array(
                     <h4>درباره ما</h4>
                     <p>آنلاین اسپورت سامانه آنلاین ورزش ایران است که به صورت تخصصی به موضوع ورزش در رشته های مختلف می پردازد. این سامانه برای این است تا مرجعی برای تمام ورزشکاران و ورزش دوستان باشد.</p>
                     <ul class="list-unstyled">
-                        <li><a title="OSPORT چیست؟" href="#">OSPORT چیست؟</a></li>
-                        <li><a title="مزایای OSPORT" href="#">مزایای OSPORT</a></li>
-                        <li><a title="تامین کنندگان" href="#">تامین کنندگان</a></li>
-                        <li><a title="استخدام در OSPORT" href="#">استخدام در OSPORT</a></li>
-                        <li><a title="همکاری با ما" href="#">همکاری با ما</a></li>
+                        <li><a title="آنلاین اسپرت چیست؟" href="#">آنلاین اسپرت چیست؟</a></li>
+                        <li><a title="مزایای آنلاین اسپرت" href="#">مزایای آنلاین اسپرت</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-xs-12">
-                    <h4>راهنمای OSPORT</h4>
+                    <h4>راهنمای آنلاین اسپرت</h4>
                     <ul class="list-unstyled">
                         <li><a title="پرسش های متداول" href="#">پرسش های متداول</a></li>
                         <li><a title="روش های بازگردادن کالا" href="#">روش های بازگردادن کالا</a></li>
-                        <li><a title="شرایط و قوانین" href="#">شرایط و قوانین</a></li>
+                        <li><a title="قوانین و مقررات" href="https://www.osport.ir/page/terms-and-conditions">قوانین و مقررات</a></li>
                         <li><a title="حریم خصوصی" href="#">حریم خصوصی</a></li>
                         <li><a title="کنترل کیفیت" href="#">کنترل کیفیت</a></li>
-                        <li><a title="درباره OSPORT" href="#">درباره OSPORT</a></li>
-                        <li><a title="تماس با OSPORT" href="#">تماس با OSPORT</a></li>
+                        <li><a title="درباره آنلاین اسپرت" href="https://www.osport.ir/page/about-us">درباره آنلاین اسپرت</a></li>
+                        <li><a title="تماس با آنلاین اسپرت" href="https://www.osport.ir/contact">تماس با آنلاین اسپرت</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-xs-12">
@@ -630,14 +629,16 @@ $userBar = $this->widget('system-user-bar', array(
                     </ul>
                 </div>
                 <div class="col-md-3 col-xs-12">
-                    <ul class="list-inline">
-                        <li>
-                            <img class="img-responsive" src="<?php echo $this->assetTheme('image/behpardakht.png'); ?>" alt="به پرداخت">
-                        </li>
-                        <li>
-                            <img class="img-responsive" id="drftbrgwrgvlbrgwrgvl" onclick="window.open('https://trustseal.enamad.ir/Verify.aspx?id=16565&p=nbpdhwmbyncrhwmbyncr', 'Popup','toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30')" alt="نماد اعتماد الکترونیک" src="https://trustseal.enamad.ir/logo.aspx?id=16565&p=lznbkzoefujykzoefujy">
-                        </li>
-                    </ul>
+                    <div class="pi-footer-logo">
+                        <ul class="list-inline">
+                            <li>
+                                <img class="img-responsive" src="<?php echo $this->assetTheme('image/behpardakht.png'); ?>" alt="به پرداخت">
+                            </li>
+                            <li>
+                                <img class="img-responsive" id="drftbrgwrgvlbrgwrgvl" onclick="window.open('https://trustseal.enamad.ir/Verify.aspx?id=16565&p=nbpdhwmbyncrhwmbyncr', 'Popup','toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30')" alt="نماد اعتماد الکترونیک" src="https://trustseal.enamad.ir/logo.aspx?id=16565&p=lznbkzoefujykzoefujy">
+                            </li>
+                        </ul>
+                    </div>
                     <div class="pi-footer-social">
                         <p class="text-en">Join Us ...</p>
                         <p>شبکه های اجتماعی</p>
