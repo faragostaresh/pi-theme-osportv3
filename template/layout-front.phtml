@@ -384,7 +384,9 @@ $userBar = $this->widget('system-user-bar', array(
                     <div class="col-md-6 col-xs-12">
                         <h3>با عضویت در خبرنامه</h3>
                         <h4>۳۵۰۰۰ تخفیف اولین خرید</h4>
-                        <p><a class="btn btn-default" href="">عضویت</a></p>
+                        <p>
+                            <?php echo $this->widget('subscription-subscription'); ?>
+                        </p>
                     </div>
                 </div>
             </div>
