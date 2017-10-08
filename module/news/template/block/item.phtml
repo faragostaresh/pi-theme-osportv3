@@ -12,9 +12,13 @@
                 <?php $mediumUrl = Pi::api('doc','media')->getSingleLinkUrl($story['main_image'])->setConfigModule('news')->thumb('medium'); ?>
                 <div class="item" itemscope
                      itemtype="https://schema.org/Article">
-                    <img itemprop="image" class="media-object img-responsive u-photo"
-                         src="<?php echo $this->escape($thumbUrl); ?>"
-                         alt="<?php echo $this->escape($story['title']); ?>">
+                    <a itemprop="url" class="u-url hover-caption-more"
+                       title="<?php echo $this->escape($story['title']); ?>"
+                       href="<?php echo $this->escape($story['storyUrl']); ?>">
+                        <img itemprop="image" class="media-object img-responsive u-photo"
+                             src="<?php echo $this->escape($thumbUrl); ?>"
+                             alt="<?php echo $this->escape($story['title']); ?>">
+                    </a>
                     <h3 itemprop="name headline">
                         <a itemprop="url" class="u-url hover-caption-more"
                            title="<?php echo $this->escape($story['title']); ?>"

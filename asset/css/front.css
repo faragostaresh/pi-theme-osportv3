@@ -861,3 +861,19 @@ form .icon-question-sign {
         text-align: center;
     }
 }
+
+/* guide */
+.guide #attributes h2 {
+    font-size: 12px !important;
+    padding: 10px 0;
+}
+
+.guide #attributes .col-md-3 {
+    width: 40% !important;
+    padding: 0;
+}
+
+.guide #attributes .col-md-9 {
+    width: 59% !important;
+    padding: 0;
+}
