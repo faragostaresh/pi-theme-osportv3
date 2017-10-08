@@ -1,0 +1,35 @@
+<div class="news-block">
+    <div class="news-item-block itemList clearfix">
+        <?php if ($block['blockEffect']) {
+            $this->jQuery(array(
+                'extension/owl.carousel.min.js',
+                'extension/owl.carousel.css',
+            ));
+        } ?>
+        <div class="owl-carousel clearfix">
+            <?php foreach ($block['resources'] as $story) { ?>
+                <?php $thumbUrl = Pi::api('doc','media')->getSingleLinkUrl($story['main_image'])->setConfigModule('news')->thumb('thumbnail'); ?>
+                <?php $mediumUrl = Pi::api('doc','media')->getSingleLinkUrl($story['main_image'])->setConfigModule('news')->thumb('medium'); ?>
+                <div class="item" itemscope
+                     itemtype="https://schema.org/Article">
+                    <img itemprop="image" class="media-object img-responsive u-photo"
+                         src="<?php echo $this->escape($thumbUrl); ?>"
+                         alt="<?php echo $this->escape($story['title']); ?>">
+                    <h3 itemprop="name headline">
+                        <a itemprop="url" class="u-url hover-caption-more"
+                           title="<?php echo $this->escape($story['title']); ?>"
+                           href="<?php echo $this->escape($story['storyUrl']); ?>">
+                            <?php echo $this->escape($story['title']); ?>
+                        </a>
+                    </h3>
+                    <?php if ($block['showdesc']) { ?>
+                        <div class="clearfix">
+                            <div class="news-item-block-summary p-summary"><?php echo $story['text_summary']; ?></div>
+                        </div>
+                    <?php } ?>
+                    <meta itemprop="datePublished" content="<?php echo $this->escape(date("Y-m-d H:i:s", $story['time_publish'])); ?>"/>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>

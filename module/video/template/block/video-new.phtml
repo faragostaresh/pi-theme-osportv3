@@ -1,0 +1,50 @@
+<?php switch ($block['column']) {
+    case 1:
+        $videoBlockBoxSize = 'col-md-12 col-xs-12';
+        break;
+
+    case 2:
+        $videoBlockBoxSize = 'col-md-6 col-xs-12';
+        break;
+
+    case 3:
+        $videoBlockBoxSize = 'col-md-4 col-xs-12';
+        break;
+
+    case 4:
+        $videoBlockBoxSize = 'col-md-3 col-xs-12';
+        break;
+
+    case 6:
+        $videoBlockBoxSize = 'col-md-2 col-xs-12';
+        break;
+
+    default:
+        $videoBlockBoxSize = 'col-md-3 col-xs-12';
+        break;
+}
+?>
+<div class="video-block video-block-new">
+    <div class="clearfix">
+        <?php foreach ($block['resources'] as $video) { ?>
+            <div class="<?php echo $videoBlockBoxSize; ?> videoBox h-review clearfix" itemscope itemtype="https://schema.org/VideoObject">
+                <meta itemprop="thumbnail" content="<?php echo $this->escape($video['largeUrl']); ?>" />
+                <meta itemprop="datePublished" content="<?php echo $this->escape(date("Y-m-d H:i:s", $video['time_create'])); ?>" />
+                <meta itemprop="contentUrl" content="<?php echo $this->escape($video['videoFileUrl']); ?>" />
+                <?php if ($video['image']) { ?>
+                    <a itemprop="url" class="u-photo" title="<?php echo $this->escape($video['title']); ?>"
+                       href="<?php echo $this->escape($video['videoUrl']); ?>">
+                        <img itemprop="image" src="<?php echo $video['thumbUrl']; ?>"
+                             alt="<?php echo $this->escape($video['title']); ?>"/>
+                    </a>
+                <?php } ?>
+                <h4 itemprop="name" class="p-name">
+                    <a itemprop="url" title="<?php echo $this->escape($video['title']); ?>"
+                       href="<?php echo $this->escape($video['videoUrl']); ?>">
+                        <?php echo $this->escape($video['title']); ?>
+                    </a>
+                </h4>
+            </div>
+        <?php } ?>
+    </div>
+</div>

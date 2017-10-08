@@ -1,0 +1,119 @@
+<?php if (isset($block['show-columns']) && !empty($block['show-columns'])) {
+    switch ($block['show-columns']) {
+        case 1:
+            $columns = 'col-md-12 col-xs-12';
+            break;
+
+        case 2:
+            $columns = 'col-md-6 col-xs-12';
+            break;
+
+        case 3:
+            $columns = 'col-md-4 col-xs-12';
+            break;
+
+        case 4:
+            $columns = 'col-md-3 col-xs-12';
+            break;
+
+        case 6:
+            $columns = 'col-md-2 col-xs-12';
+            break;
+
+        default:
+            $columns = 'col-md-3 col-xs-12';
+            break;
+    }
+} else {
+    $columns = 'col-sm-6 col-md-4';
+}
+
+// Add css
+if ($block['show-ribbon'] || $block['show-price']) {
+    //$this->css($this->assetModule('css/block.css', 'guide'));
+} ?>
+<div class="guide-block">
+    <div class="guide-block-new clearfix <?php echo $block['extra-css']; ?>">
+        <div class="guide-block-slide">
+            <?php /* if ($block['blockEffect']) {
+                $this->jQuery(array(
+                    'extension/owl.carousel.min.js',
+                    'extension/owl.carousel.css',
+                ));
+                $this->js($this->assetModule('js/owl.carousel.config.js', 'guide'));
+                $this->css($this->assetModule('css/block.css', 'guide'));
+            } */ ?>
+            <div class="owl-carousel clearfix">
+                <?php foreach ($block['resources'] as $item) { ?>
+                    <?php switch ($item['item_type']) {
+                        case 'commercial':
+                            $schema = 'https://schema.org/LocalBusiness';
+                            break;
+
+                        case 'route':
+                            $schema = 'https://schema.org/Landform';
+                            break;
+
+                        case 'poi':
+                            $schema = 'https://schema.org/LandmarksOrHistoricalBuildings';
+                            break;
+
+                        case 'asset':
+                            $schema = 'https://schema.org/LandmarksOrHistoricalBuildings';
+                            break;
+
+                        case 'person':
+                            $schema = 'https://schema.org/Person';
+                            break;
+                    } ?>
+                    <div class="item h-review guide-block-slide-single" itemscope itemtype="<?php echo $schema; ?>">
+                        <div class="p-item h-card">
+                            <?php if ($item['main_image']) { ?>
+                                <a itemprop="url" class="u-url" title="<?php echo $this->escape($item['title']); ?>"
+                                   href="<?php echo $this->escape($item['itemUrl']); ?>">
+                                    <img itemprop="image" class="img-responsive u-photo"
+                                         src="<?php echo $this->escape($item['mediumUrl']); ?>"
+                                         alt="<?php echo $this->escape($item['title']); ?>"/>
+                                </a>
+                            <?php } ?>
+                            <h3 itemprop="name" class="p-name">
+                                <a itemprop="url" class="u-url" title="<?php echo $this->escape($item['title']); ?>"
+                                   href="<?php echo $this->escape($item['itemUrl']); ?>">
+                                    <?php echo $this->escape($item['title']); ?>
+                                </a>
+                            </h3>
+                        </div>
+                        <?php if ($item['item_type'] == 'commercial') { ?>
+                            <?php if (!empty($item['map_latitude']) && !empty($item['map_longitude'])) { ?>
+                                <div class="h-geo hidden" itemprop="geo" itemscope
+                                     itemtype="https://schema.org/GeoCoordinates">
+                                    <span class="p-latitude"><?php echo $this->escape($item['map_latitude']); ?></span>,
+                                    <span
+                                            class="p-longitude"><?php echo $this->escape($item['map_longitude']); ?></span>
+                                    <meta itemprop="latitude"
+                                          content="<?php echo $this->escape($item['map_latitude']); ?>"/>
+                                    <meta itemprop="longitude"
+                                          content="<?php echo $this->escape($item['map_longitude']); ?>"/>
+                                </div>
+                            <?php } ?>
+                        <?php } elseif ($item['item_type'] == 'route' || $item['item_type'] == 'poi') { ?>
+                            <?php if (!empty($item['map_final_latitude']) && !empty($item['map_final_longitude'])) { ?>
+                                <div class="h-geo hidden" itemprop="geo" itemscope
+                                     itemtype="https://schema.org/GeoCoordinates">
+                                    <span
+                                            class="p-latitude"><?php echo $this->escape($item['map_final_latitude']); ?></span>,
+                                    <span
+                                            class="p-longitude"><?php echo $this->escape($item['map_final_longitude']); ?></span>
+                                    <meta itemprop="latitude"
+                                          content="<?php echo $this->escape($item['map_final_latitude']); ?>"/>
+                                    <meta itemprop="longitude"
+                                          content="<?php echo $this->escape($item['map_final_longitude']); ?>"/>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
