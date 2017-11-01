@@ -1,9 +1,9 @@
-(function($) {
-    $(document).ready(function() {
+(function ($) {
+    $(document).ready(function () {
         //Fix navbar multiple level
         var navbar = $('.pi-navbar-nav');
         var hasBrand = navbar.parents('.navbar').find('.navbar-brand').length;
-        navbar.find('>li').each(function() {
+        navbar.find('>li').each(function () {
             var $this = $(this);
             var caretStr = '<span class="pi-navbar-caret"></span>';
             caretStr += '<span class="pi-navbar-caret pi-navbar-caret-outer"></span>';
@@ -17,8 +17,8 @@
             navbar.css('marginLeft', '-15px');
         }
     });
-    
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         $('.pi-section-search-shop .pi-section-search-btn').click(function () {
             var title = $('.pi-section-search-shop .pi-section-search-title').val();
             var productkind = $('.pi-section-search-shop .pi-section-search-productkind').val();
@@ -48,8 +48,8 @@
             location.href = url;
         });
     });
-    
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         $('.pi-section-search-codearea .pi-section-search-btn').click(function () {
             var code = $('.pi-section-search-codearea .pi-section-search-code').val();
             var url = "https://www.osport.ir/shop/result/#!/search?";
@@ -98,5 +98,52 @@
                 1000: {items: 3}
             }
         })
+    });
+
+    $(document).ready(function () {
+
+        $('.pi-sidebar-wrapper > ul').prepend('<li class="sidebar-brand"><a href="https://www.osport.ir">سامانه آنلاین ورزش</a></li>');
+
+        $('.pi-sidebar-wrapper > ul > li:has(ul)').addClass('dropdown');
+        $('.pi-sidebar-wrapper > ul > li:has(ul) > a').addClass('dropdown-toggle');
+        $('.pi-sidebar-wrapper > ul > li:has(ul) > a').removeAttr('href');
+        $('.pi-sidebar-wrapper > ul > li:has(ul) > a').attr('data-toggle', 'dropdown');
+        $('.pi-sidebar-wrapper > ul > li:has(ul) > a').append('<span class="caret"></span>');
+        $('.pi-sidebar-wrapper > ul > li:has(ul) > ul').addClass('dropdown-menu');
+
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul)').addClass('dropdown');
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul) > a').addClass('dropdown-toggle');
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul) > a').removeAttr('href');
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul) > a').attr('data-toggle', 'dropdown');
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul) > a').append('<span class="caret"></span>');
+        $('.pi-sidebar-wrapper > ul > li > ul > li:has(ul) > ul').addClass('dropdown-menu');
+
+
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+            isClosed = false;
+
+        trigger.click(function () {
+            hamburger_cross();
+        });
+
+        $('[data-toggle="offcanvas"]').click(function () {
+            $('.pi-wrapper').toggleClass('toggled');
+        });
+
+        function hamburger_cross() {
+
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+            } else {
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+            }
+        }
     });
 })(jQuery)
