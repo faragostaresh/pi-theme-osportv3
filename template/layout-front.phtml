@@ -135,13 +135,6 @@ $userBar = $this->widget('system-user-bar', array(
                                     <li><a title="تماس با ما" href="#">تماس با ما</a></li>
                                     <li><a title="درباره ما" href="#">درباره ما</a></li>
                                     <li><?php echo $this->widget('shop-basket'); ?></li>
-                                    <li>
-                                        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-                                            <span class="hamb-top"></span>
-                                            <span class="hamb-middle"></span>
-                                            <span class="hamb-bottom"></span>
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -174,6 +167,13 @@ $userBar = $this->widget('system-user-bar', array(
                             </div>
                             <div class="navbar-collapse collapse pi-header-right">
                                 <ul class="nav navbar-nav navbar-right pi-navbar-nav animated fadeInUp clearfix">
+                                    <li class="hamburger-icon">
+                                        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+                                            <span class="hamb-top"></span>
+                                            <span class="hamb-middle"></span>
+                                            <span class="hamb-bottom"></span>
+                                        </button>
+                                    </li>
                                     <li<?php if ($module == 'system') { ?> class="active"<?php } ?>>
                                         <a itemprop="url" href="https://www.osport.ir" title="خانه">
                                             <span itemprop="name">خانه</span>
@@ -682,5 +682,6 @@ $userBar = $this->widget('system-user-bar', array(
         </div>
     </footer>
     <?php echo $this->conditions() ?>
+</div>
 </body>
 </html>
