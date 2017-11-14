@@ -741,6 +741,8 @@ form .icon-question-sign {
     background: #fff;
     height: 140px;
     border-radius: 8px;
+    width: 45% !important;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
