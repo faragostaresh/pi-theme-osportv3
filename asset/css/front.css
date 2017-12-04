@@ -880,20 +880,7 @@ form .icon-question-sign {
     padding: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Sidebar hamburger menu */
 .nav .open > a {
     background-color: transparent;
 }
@@ -1277,4 +1264,27 @@ form .icon-question-sign {
     -webkit-transition: all 0.35s ease-in-out;
     display: block;
     opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .pi-wrapper.toggled {
+        padding-right: 220px;
+    }
+
+    .pi-wrapper.toggled .pi-sidebar-wrapper {
+        width: 100%;
+    }
+
+    .pi-wrapper.toggled #page-content-wrapper {
+
+        right: -220px;
+        padding-right: 220px !important;
+        margin-right: 220px !important;
+    }
+
+    .pi-sidebar-wrapper {
+        height: 100%;
+        right: 220px;
+        margin-right: -220px;
+    }
 }

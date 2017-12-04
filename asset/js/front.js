@@ -131,6 +131,14 @@
             $('.pi-wrapper').toggleClass('toggled');
         });
 
+        $('.pi-sidebar-wrapper').click(function () {
+            $('.pi-wrapper').toggleClass('toggled');
+            overlay.hide();
+            trigger.removeClass('is-open');
+            trigger.addClass('is-closed');
+            isClosed = false;
+        });
+
         function hamburger_cross() {
 
             if (isClosed == true) {
