@@ -881,6 +881,7 @@ form .icon-question-sign {
 }
 
 /* Sidebar hamburger menu */
+/* https://codepen.io/j_holtslander/pen/XmpMEp */
 .nav .open > a {
     background-color: transparent;
 }
@@ -1175,7 +1176,7 @@ form .icon-question-sign {
     line-height: 32px;
     opacity: 0;
     text-align: center;
-    width: 100px;
+    width: 50px !important;
 }
 
 .hamburger.is-closed:hover before {
@@ -1222,7 +1223,8 @@ form .icon-question-sign {
     height: 4px;
     right: 0;
     position: absolute;
-    width: 100%;
+    /* width: 100%; */
+    width: 50px !important;
 }
 
 .hamburger.is-open .hamb-top {

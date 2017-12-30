@@ -31,7 +31,7 @@ $this->css($this->assetTheme('css/front.css'));
 $this->css($this->assetLocale('locale.css'));
 
 // Load front.js on footer
-$this->footScript()->appendFile($this->assetTheme('js/front.js'));
+$this->headScript()->appendFile($this->assetTheme('js/front.js'));
 
 // Apple icons
 // Apple icon for iphone
@@ -684,7 +684,7 @@ $userBar = $this->widget('system-user-bar', array(
             </div>
         </div>
     </footer>
-    <?php echo $this->conditions() ?>
+    <?php //echo $this->conditions() ?>
 </div>
 </body>
 </html>
