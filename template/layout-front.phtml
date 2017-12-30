@@ -128,7 +128,6 @@ $userBar = $this->widget('system-user-bar', array(
                     <div class="col-md-10 col-md-offset-1 col-xs-12">
                         <div class="row clearfix">
                             <div class="col-md-12 col-xs-12">
-
                                 <?php echo $userBar; ?>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a title="تماس با ما" href="#">۰۲۱-۸۸۵۱۱۹۲۱</a></li>
@@ -147,80 +146,76 @@ $userBar = $this->widget('system-user-bar', array(
                 <div class="container-fluid">
                     <div class="row" itemscope itemtype="https://schema.org/SiteNavigationElement">
                         <nav class="col-md-10 col-md-offset-1 col-xs-12 clearfix">
-
                             <div class="row clearfix">
-                            <div class="col-md-1 col-xs-3">
-                                <div class="hamburger-icon">
-                                    <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-                                        <span class="hamb-top"></span>
-                                        <span class="hamb-middle"></span>
-                                        <span class="hamb-bottom"></span>
-                                    </button>
+                                <div class="col-md-1 col-xs-3">
+                                    <div class="hamburger-icon">
+                                        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+                                            <span class="hamb-top"></span>
+                                            <span class="hamb-middle"></span>
+                                            <span class="hamb-bottom"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="navbar-header pi-header-left col-md-3 col-xs-9">
+                                    <!-- <button class="navbar-toggle hidden-xs" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <i class="fa fa-bars"></i>
+                                    </button> -->
+                                    <?php if ($module == 'system') { ?>
+                                        <h1>
+                                            <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
+                                                <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
+                                            </a>
+                                        </h1>
+                                    <?php } else { ?>
+                                        <h2>
+                                            <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
+                                                <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
+                                            </a>
+                                        </h2>
+                                    <?php } ?>
+                                </div>
+                                <div class="navbar-collapse collapse pi-header-right col-md-8 hidden-xs">
+                                    <ul class="nav navbar-nav navbar-right pi-navbar-nav animated fadeInUp clearfix">
+                                        <li<?php if ($module == 'system') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir" title="خانه">
+                                                <span itemprop="name">خانه</span>
+                                            </a>
+                                        </li>
+                                        <li<?php if ($module == 'shop') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir/shop" title="فروشگاه">
+                                                <span itemprop="name">فروشگاه</span>
+                                            </a>
+                                        </li>
+                                        <li<?php if ($module == 'video') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir/video" title="ویدیو ها">
+                                                <span itemprop="name">ویدیو ها</span>
+                                            </a>
+                                        </li>
+                                        <li<?php if ($module == 'news') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir/news" title="علم ورزش">
+                                                <span itemprop="name">علم ورزش</span>
+                                            </a>
+                                        </li>
+                                        <li<?php if ($module == 'guide') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir/guide" title="مربیان و باشگاه ها">
+                                                <span itemprop="name">مربیان و باشگاه ها</span>
+                                            </a>
+                                        </li>
+                                        <li<?php if ($module == 'talent') { ?> class="active"<?php } ?>>
+                                            <a itemprop="url" href="https://www.osport.ir/talent" title="استعداد یابی">
+                                                <span itemprop="name">استعداد یابی</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <?php echo $userBar; ?>
+                                    <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
+                                        <li><a title="تماس با ما" href="#">۰۲۱-۸۸۵۱۱۹۲۱</a></li>
+                                        <li><a title="تماس با ما" href="#">تماس با ما</a></li>
+                                        <li><a title="درباره ما" href="#">درباره ما</a></li>
+                                        <li><?php echo $this->widget('shop-basket'); ?></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="navbar-header pi-header-left col-md-3 col-xs-9">
-                                <!-- <button class="navbar-toggle hidden-xs" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <i class="fa fa-bars"></i>
-                                </button> -->
-                                <?php if ($module == 'system') { ?>
-                                    <h1>
-                                        <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
-                                            <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
-                                        </a>
-                                    </h1>
-                                <?php } else { ?>
-                                    <h2>
-                                        <a href="<?php echo Pi::url($this->url('home')); ?>" title="<?php echo _escape($sitename); ?>">
-                                            <img class="img-responsive" src="<?php echo $this->assetTheme('image/logo.png'); ?>" alt="<?php echo _escape($sitename); ?>">
-                                        </a>
-                                    </h2>
-                                <?php } ?>
-                            </div>
-                            <div class="navbar-collapse collapse pi-header-right col-md-8 hidden-xs">
-                                <ul class="nav navbar-nav navbar-right pi-navbar-nav animated fadeInUp clearfix">
-                                    <li<?php if ($module == 'system') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir" title="خانه">
-                                            <span itemprop="name">خانه</span>
-                                        </a>
-                                    </li>
-                                    <li<?php if ($module == 'shop') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir/shop" title="فروشگاه">
-                                            <span itemprop="name">فروشگاه</span>
-                                        </a>
-                                    </li>
-                                    <li<?php if ($module == 'video') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir/video" title="ویدیو ها">
-                                            <span itemprop="name">ویدیو ها</span>
-                                        </a>
-                                    </li>
-                                    <li<?php if ($module == 'news') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir/news" title="علم ورزش">
-                                            <span itemprop="name">علم ورزش</span>
-                                        </a>
-                                    </li>
-                                    <li<?php if ($module == 'guide') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir/guide" title="مربیان و باشگاه ها">
-                                            <span itemprop="name">مربیان و باشگاه ها</span>
-                                        </a>
-                                    </li>
-                                    <li<?php if ($module == 'talent') { ?> class="active"<?php } ?>>
-                                        <a itemprop="url" href="https://www.osport.ir/talent" title="استعداد یابی">
-                                            <span itemprop="name">استعداد یابی</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <?php echo $userBar; ?>
-                                <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg">
-                                    <li><a title="تماس با ما" href="#">۰۲۱-۸۸۵۱۱۹۲۱</a></li>
-                                    <li><a title="تماس با ما" href="#">تماس با ما</a></li>
-                                    <li><a title="درباره ما" href="#">درباره ما</a></li>
-                                    <li><?php echo $this->widget('shop-basket'); ?></li>
-                                </ul>
-                            </div>
-                            </div>
-
-
-
                         </nav>
                     </div>
                 </div>
