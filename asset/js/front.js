@@ -84,7 +84,8 @@
     $(document).ready(function () {
 
         $('.pi-sidebar-wrapper > ul').prepend('<li class="sidebar-brand"><a href="https://www.osport.ir">سامانه آنلاین ورزش</a></li>');
-        $('.pi-sidebar-wrapper > ul').append('<li class="sidebar-close"><a href="#">بستن</a></li>');
+        $('.pi-sidebar-wrapper > ul').prepend('<li class="sidebar-close"><a href="#"><i class="fa fa-times" aria-hidden="true"></i> بستن</a></li>');
+        $('.pi-sidebar-wrapper > ul').append('<li class="sidebar-close"><a href="#"><i class="fa fa-times" aria-hidden="true"></i> بستن</a></li>');
 
         $('.pi-sidebar-wrapper > ul > li:has(ul)').addClass('dropdown');
         $('.pi-sidebar-wrapper > ul > li:has(ul) > a').addClass('dropdown-toggle');

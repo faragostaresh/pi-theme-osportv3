@@ -1040,6 +1040,7 @@ form .icon-question-sign {
 .sidebar-nav li:nth-child(16):before {
     background-color: #F9500A;
 }
+
 .sidebar-nav li:nth-child(17):before {
     background-color: #F9500A;
 }
@@ -1071,6 +1072,7 @@ form .icon-question-sign {
 .sidebar-nav li:nth-child(24):before {
     background-color: #F9500A;
 }
+
 .sidebar-nav li:nth-child(25):before {
     background-color: #F9500A;
 }
@@ -1097,7 +1099,7 @@ form .icon-question-sign {
 
 .sidebar-nav li:hover:before {
     transition: width 0.2s ease-in;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .sidebar-nav li a {
@@ -1109,7 +1111,7 @@ form .icon-question-sign {
 
 .sidebar-nav li.open:hover before {
     transition: width 0.2s ease-in;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .sidebar-nav .dropdown-menu {
@@ -1120,7 +1122,7 @@ form .icon-question-sign {
     margin: 0;
     padding: 0;
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .sidebar-nav li a:hover,
@@ -1258,7 +1260,7 @@ form .icon-question-sign {
     line-height: 32px;
     opacity: 0;
     text-align: center;
-    width: 100px;
+    /* width: 100px; */
 }
 
 .hamburger.is-open:hover before {
@@ -1270,7 +1272,7 @@ form .icon-question-sign {
 
 @media (max-width: 768px) {
     .pi-wrapper.toggled {
-        padding-right: 220px;
+        padding-right: 0;
     }
 
     .pi-wrapper.toggled .pi-sidebar-wrapper {
@@ -1278,15 +1280,15 @@ form .icon-question-sign {
     }
 
     .pi-wrapper.toggled #page-content-wrapper {
-
-        right: -220px;
-        padding-right: 220px !important;
-        margin-right: 220px !important;
+        right: 0;
+        padding-right: 0;
+        margin-right: 0;
     }
 
     .pi-sidebar-wrapper {
         height: 100%;
-        right: 220px;
-        margin-right: -220px;
+        right: 0;
+        margin-right: 0;
+        overflow-x: hidden;
     }
 }
