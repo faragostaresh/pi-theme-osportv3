@@ -1271,6 +1271,19 @@ form .icon-question-sign {
 }
 
 @media (max-width: 768px) {
+    .pi-wrapper.toggled #page-content-wrapper {
+        position: absolute;
+        right: 0 !important;
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .pi-wrapper.toggled .pi-sidebar-wrapper {
+        width: 100%;
+    }
+}
+
+/* @media (max-width: 768px) {
     .pi-wrapper.toggled {
         padding-right: 0;
     }
@@ -1291,4 +1304,4 @@ form .icon-question-sign {
         margin-right: 0;
         overflow-x: hidden;
     }
-}
+} */
